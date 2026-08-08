@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #FAFAF8;
+  --surface: #FFFFFF;
+  --ink: #14161F;
+  --ink-soft: #4B4E5A;
+  --muted: #8A8D98;
+  --border: #E7E7E2;
+  --signal: #3B5BFF;
+  --signal-dark: #2540CC;
+  --signal-soft: #EDF0FF;
+  --positive: #1FAA59;
+  --positive-soft: #E8F7EE;
+  --negative: #E2492D;
+  --negative-soft: #FDECE8;
+  --amber: #C98A1F;
+  --amber-soft: #FBF1DF;
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  color: var(--ink);
+  background: var(--bg);
+}
+
+.font-display {
+  font-family: var(--font-fraunces), Georgia, serif;
+}
+
+.font-mono-data {
+  font-family: var(--font-plex-mono), 'Courier New', monospace;
+}
+
+::selection {
+  background: var(--signal);
+  color: white;
+}
+
+/* Loop mark animation */
+@keyframes loop-draw {
+  0% { stroke-dashoffset: 300; }
+  100% { stroke-dashoffset: 0; }
+}
+.loop-mark path {
+  stroke-dasharray: 300;
+  animation: loop-draw 2.2s ease-out forwards;
+}
+
+@keyframes pulse-node {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+.pulse-node {
+  animation: pulse-node 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loop-mark path { animation: none; stroke-dashoffset: 0; }
+  .pulse-node { animation: none; }
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #D8D8D2; border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: #C2C2BB; }
